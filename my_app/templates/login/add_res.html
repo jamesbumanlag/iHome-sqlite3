@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Add New Resident
+{% endblock %}
+
+{% block content %}
+
+<div class="col-md-6 offset-md-3">
+    <br>
+    <br>
+    <h1>New Resident</h1>
+    <br><br>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label  class="form-label"><strong>Personal Information</strong> </label>
+        <div class="input-group">
+            
+            
+            <input type="text"  aria-label="First name" class="form-control" name="first_name" placeholder="First Name" required>
+            <input type="text" aria-label="Last name" class="form-control" name="last_name" placeholder="Last Name" required>
+          </div>
+            <br>
+
+           
+
+          <div class="input-group mb-3">
+            <input type="text"  class="form-control" name="age" placeholder="Age" required>
+           
+                <select class="form-select" id="inputGroupSelect01">
+                  <option selected>Gender</option>
+                  <option value="1">Male</option>
+                  <option value="2">Female</option>
+                  <option value="3">Others</option>
+                </select>
+            <input type="text"  class="form-control" name="religion" placeholder="Religion" required> 
+        </div>
+
+        <br><br>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"><strong>Address</strong></label>
+          <input type="text" class="form-control" id="exampleInputEmail1" name="first_name" placeholder="House No / Street Name" required> 
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="text"  class="form-control" name="suburb" placeholder="Suburb/City" required>
+            <select class="form-select" id="inputGroupSelect01">
+                <option selected>State</option>
+                <option value="1">NT</option>
+                <option value="2">QLD</option>
+                <option value="3">NSW</option>
+                <option value="4">VIC</option>
+                <option value="5">WA</option>
+                <option value="6">ACT</option>
+                <option value="7">TAZ</option>
+              </select>
+            <input type="text"  class="form-control" name="post_code" placeholder="Post Code" required> 
+            <input type="text"  class="form-control" name="country" placeholder="Country" required>
+        </div>
+
+        <br><br>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"><strong>Medical History</strong></label>
+
+            <select class="form-select" id="inputGroupSelect01">
+                <option selected>Section</option>
+                <option value="1">Low Care Section</option>
+                <option value="2">High Care Section</option>
+                <option value="3">Community Section</option>
+            </select>
+            <br>
+
+            <textarea class="form-control" id="exampleInputEmail1" aria-label="With textarea" placeholder="Medical Background"></textarea>
+            <br>
+            <label  class="form-label"><Strong>Contact Person</Strong> </label>
+            <div class="input-group">
+                <input type="text"  aria-label="First name" class="form-control" name="first_name" placeholder="First Name" required>
+                <input type="text" aria-label="Last name" class="form-control" name="last_name" placeholder="Last Name" required>
+            </div>
+            <br>
+
+            <div class="input-group mb-3">
+                <input type="text"  class="form-control" name="contact" placeholder="Contact Number" required>                      
+                <input type="text"  class="form-control" name="relationship" placeholder="Relationship" required> 
+            </div>
+            
+            
+            
+            
+          </div>
+        
+          <br><br>
+
+          <label  class="form-label"><strong>Upload Photo</strong> </label>
+          <div class="input-group">
+            <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" >
+            <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Upload</button>
+          </div>
+
+          <br><br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <br><br><br>
+</div>
+
+{% endblock %}

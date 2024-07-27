@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+{{ customer_record.first_name}} {{ customer_record.last_name}}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="col-md-6 offset-md-3 container">
+    <br>
+    <br>
+    
+    <br>
+
+    {% if user.is_authenticated %}
+        <div class="card">
+            <div class="card-header">
+               <h4>{{ customer_record.first_name}} {{ customer_record.last_name}}</h4> 
+            </div>
+
+            {% with image=customer_record.person_image %}
+                {% if image %}
+                    <img src="{{ image.url }}" class="card-img-top" width="522">
+                {% else %}
+                    <p>{{ customer_record.first_name }} {{ customer_record.last_name }} Photo</p>
+                {% endif %}
+            {% endwith %}
+            
+            <div class="card-body">
+            
+            <p class="card-text">
+                <strong>Personal Info </strong> <br>
+                Age : {{ customer_record.age }} <br>
+                Gender : {{ customer_record.gender }} <br>
+                Religion : {{ customer_record.religion }} <br><br>
+                <strong>Address</strong> <br>
+                House No/Street Name : {{ customer_record.house_street }} <br>
+                Suburb: {{ customer_record.suburb }} <br>
+                State: {{ customer_record.state }} <br>
+                Postcode: {{ customer_record.post_code }} <br>
+                Country: {{ customer_record.country }}
+                <br><br>
+                <strong>Health Assessment</strong> <br>
+                Section: {{ customer_record.section }} <br>
+                Medical Background: {{ customer_record.med_background }}
+                <br><br>
+                <Strong>Contact Person</Strong><br>
+                Name: {{ customer_record.contact_first}} {{ customer_record.contact_last}} <br>
+                Contact Number: {{ customer_record.contact_number }} <br>
+                Relationship: {{ customer_record.contact_rel}}
+                <br><br>
+                <strong>Care Plan</strong> <br>
+                {{ customer_record.care_plan}}
+            </p>
+            <br>
+            <a href="{% url 'residents' %}" class="btn btn-primary">Back</a> &nbsp;
+            <a href="{% url 'update' customer_record.id %}" class="btn btn-primary">Update</a> &nbsp;
+            
+            
+            </div>
+        </div>
+
+
+
+
+    {% endif %}
+</div>
+ <br><br>
+
+
+
+{% endblock %}

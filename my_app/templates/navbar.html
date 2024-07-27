@@ -1,0 +1,115 @@
+
+        {% if user.is_authenticated %}
+
+          <nav class="navbar navbar-expand-lg bg-light navbar-success">
+              <div class="container-fluid">
+                  <a class="navbar-brand" href="{% url 'residents' %}"><h3>iHome System</h3></a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    
+                      <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'add_record' %}">&nbsp;Add Resident&nbsp;</a>
+                      </li>
+
+
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Add Care
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="{% url 'personal_care' %}">Personal Care</a></li>
+                          <li><a class="dropdown-item" href="{% url 'mobility' %}">Mobility Assistance</a></li>
+                          <li><a class="dropdown-item" href="{% url 'nutrition' %}">Nutrition Hydration</a></li>
+                          <li><a class="dropdown-item" href="{% url 'health' %}">Health Monitoring</a></li>
+                          <li><a class="dropdown-item" href="{% url 'activities' %}">Activities</a></li>
+                          <li><a class="dropdown-item" href="{% url 'house' %}">Housekeeping</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="{% url 'progress_notes' %}">Progress Notes</a></li>
+                          
+                        </ul>
+                      </li>
+
+                      <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'view_care' %}">&nbsp;View Care&nbsp;</a>
+                      </li>
+                      
+                      
+                      
+            
+                     
+                  </div>
+                  
+                  
+
+                    
+                      <div>
+                        Hello, {{ user.first_name }} ! &nbsp;
+                      <a href="{% url 'logout' %}" class="btn btn-outline-dark">Logout</a>
+                      </div>
+              </div>
+            </nav>
+
+        {% else %}
+        <nav class="navbar navbar-expand-lg bg-light navbar-success">
+          
+          <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}"><h3>iHome Care</h3></a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'services' %}">Services</a>
+                  </li>
+                  
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'contact' %}">Contact</a>
+                  </li>
+        
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'about' %}">About Us</a>
+                  </li>
+                
+                  
+                </ul>
+
+
+                <form method="POST" action="{% url 'navbar' %}" class="d-flex align-items-center" role="login">
+                  {% csrf_token %}
+
+                  
+                  <input type="text" class="form-control me-2" placeholder="Username" name="username" required>
+                  <input type="password" class="form-control me-2" placeholder="Password" name="password" required>
+                  <button class="btn btn-outline-dark" type="submit">Login</button>
+                  
+                  <div class="dropdown ms-2">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                      <li><a class="dropdown-item" href="{% url 'register' %}">Register Account</a></li>
+                      <li><a class="dropdown-item" href="{% url 'reset' %}">Reset Password</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Close</a></li>
+                    </ul>
+                  </div>
+                  
+                </form>
+              </div>
+            </nav>
+          {% endif %}
+
+
+
+      
+  

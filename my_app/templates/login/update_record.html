@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Update Record
+{% endblock %}
+
+{% block content %}
+
+    <div class="col-md-6 offset-md-3">
+        <br>
+        <br>
+        <h1>Update {{current_record.first_name}} {{current_record.last_name}}</h1>
+        <br><br>
+
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h4>Personal Info</h4>
+            <div class="input-group">
+                <span class="input-group-text">Name</span>
+                {{ form.first_name }}
+                {{ form.last_name }}
+            </div>
+              <br>
+            <div class="input-group">
+                <span class="input-group-text">Age</span>
+                {{ form.age }}
+                <span class="input-group-text">Gender</span>
+                {{ form.gender }}
+                <span class="input-group-text">Religion</span>
+                {{ form.religion }}
+
+            </div>
+            <br>
+            <br>
+            <h4>Address</h4>
+            <div class="input-group">
+                <span class="input-group-text">House No./Street Name</span>
+                {{ form.house_street }}
+                <span class="input-group-text">Suburb</span>
+                {{ form.suburb }}
+            </div><br>
+            <div class="input-group">
+                <span class="input-group-text">State</span>
+                {{ form.state }}
+                
+                <span class="input-group-text">Zipcode</span>
+                {{ form.post_code }}
+                <span class="input-group-text">Country</span>
+                {{ form.country }}
+            </div>
+            <br><br>
+            
+            <h4>Contact Person</h4>
+            <div class="input-group">
+                <span class="input-group-text">Name</span>
+                {{ form.contact_first }} {{ form.contact_last}}
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-text">Contact</span>
+                {{ form.contact_number }}
+                <span class="input-group-text">Relationship</span>
+                {{ form.contact_rel }}
+            </div>
+            <br><br>
+
+            <h4>Medical Assessment</h4>
+            <div class="input-group">
+                <span class="input-group-text">Section</span>
+                {{ form.section }}
+                <span class="input-group-text">Medical Condition</span>
+                {{ form.med_background }}
+            </div>
+            <br><br>
+            
+            <h4>Care Plan</h4>
+            <div class="input-group">
+                
+                {{ form.care_plan }}
+            </div>
+            
+            <br><br>
+
+            <h4>Upload Image</h4>
+            <div class="input-group">
+                
+                <br>
+                {{ form.person_image }}
+            </div>
+
+            <br><br>
+            <button type="submit" class="btn btn-primary">Update Record</button>
+            <button type="button" class="btn btn-primary" onclick="history.back()">Back</button>
+           
+        
+        </form>
+
+    </div>
+
+    <br><br>
+
+{% endblock %}

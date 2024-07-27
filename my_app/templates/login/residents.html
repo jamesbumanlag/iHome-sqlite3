@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Residents Account
+{% endblock %}
+
+{% block content %}
+
+<div class="col-md-6 offset-md-3 container">
+    <br>
+    <br>
+    <h1 class="container">Residents</h1>
+    <br>
+
+    {% if user.is_authenticated %}
+
+        <div class="container">
+            <div class="row">
+              
+                {% for record in records %}
+                    <div class="col-md-6">
+                        <div class="card mb-4" style="width: 18rem;">
+
+                            {% with image=record.person_image %}
+                                {% if image %}
+                                    <img src="{{ image.url }}" class="card-img-top" alt="{{ record.first_name }} Photo" width="522">
+                                {% else %}
+                                    <p>{{ record.first_name }} {{ record.last_name }} Photo</p>
+                                {% endif %}
+                            {% endwith %}
+                                
+                            <div class="card-body">
+                                <h5 class="card-title">{{ record.first_name }} {{ record.last_name }}</h5>
+                                <p class="card-text">
+                                    <strong>Section: </strong> {{ record.section }} <br>
+                                    <strong>Medical Background: </strong> {{ record.med_background }}
+                                </p>
+                                <a href="{% url 'record' record.id %}" class="btn btn-primary">View</a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    {% if forloop.counter|divisibleby:2 and not forloop.last %}
+                        </div><div class="row">
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <h1>No records</h1>
+    {% endif %}
+
+    <br>
+    <br>
+</div>
+
+<br><br>
+{% endblock %}

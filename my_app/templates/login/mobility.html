@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+{{ care.first_name}} {{ care.last_name}}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="col-md-6 offset-md-3 container">
+    <br>
+    <br>
+    
+    <br>
+
+        <br>
+        <h2>Add Care</h2>
+      
+        <br>
+        <h5>Mobility Assistance</h5>
+        <br>
+        <form  method=POST>
+            {% csrf_token %}
+
+
+            {{ form.person }} <br>
+            {{ form.date }} <br>
+            {{ form.time }} <br>
+            {{ form.transfer }} <br>
+            {{ form.mobility }} <br>
+
+            <br>
+            <input type="submit" value="Submit" class="btn btn-primary">
+
+
+        </form>
+   <br><br>
+
+</div>
+
+{% endblock %}
